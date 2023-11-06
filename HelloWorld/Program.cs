@@ -7,6 +7,7 @@ namespace HelloWorld
         {
             String myname = "Ninh Ngoc Son";
             Console.WriteLine("My name is " + myname);
+            int Number = 15;
             
         }
     }
