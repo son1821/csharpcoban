@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHlandler", "Except
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Operators", "Operators\Operators.csproj", "{A32E68CE-3C71-45EE-A778-0D0CC5695799}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchCaseStructure", "SwitchCaseStructure\SwitchCaseStructure.csproj", "{85608F49-AC8B-4DC8-AEAC-8B7565252B3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwitchCaseStructure", "SwitchCaseStructure\SwitchCaseStructure.csproj", "{85608F49-AC8B-4DC8-AEAC-8B7565252B3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loop", "Loop\Loop.csproj", "{DFFB3C0D-CFBF-416A-9FBF-6BC6E2FB4452}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{85608F49-AC8B-4DC8-AEAC-8B7565252B3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85608F49-AC8B-4DC8-AEAC-8B7565252B3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85608F49-AC8B-4DC8-AEAC-8B7565252B3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFFB3C0D-CFBF-416A-9FBF-6BC6E2FB4452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFFB3C0D-CFBF-416A-9FBF-6BC6E2FB4452}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFFB3C0D-CFBF-416A-9FBF-6BC6E2FB4452}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFFB3C0D-CFBF-416A-9FBF-6BC6E2FB4452}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
