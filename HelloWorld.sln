@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Array", "Array\Array.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhamViTruyCap", "PhamViTruyCap\PhamViTruyCap.csproj", "{A31AA224-7285-4EC1-8C0B-88CF584EA5B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Static", "Static\Static.csproj", "{80D5B55E-A0CC-4B59-BC53-9ACFF3B9F588}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Static", "Static\Static.csproj", "{80D5B55E-A0CC-4B59-BC53-9ACFF3B9F588}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeThua", "KeThua\KeThua.csproj", "{1C8A7F09-7D4F-4699-98C5-83A9B5F24E54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{80D5B55E-A0CC-4B59-BC53-9ACFF3B9F588}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80D5B55E-A0CC-4B59-BC53-9ACFF3B9F588}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80D5B55E-A0CC-4B59-BC53-9ACFF3B9F588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C8A7F09-7D4F-4699-98C5-83A9B5F24E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C8A7F09-7D4F-4699-98C5-83A9B5F24E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C8A7F09-7D4F-4699-98C5-83A9B5F24E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C8A7F09-7D4F-4699-98C5-83A9B5F24E54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
