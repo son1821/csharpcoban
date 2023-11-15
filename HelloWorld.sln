@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeThua", "KeThua\KeThua.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinhDaHinh", "TinhDaHinh\TinhDaHinh.csproj", "{6AE7107B-D4C6-44EA-99EC-2E03AB01FAEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{637AA467-9295-40E7-98EE-645CCDD25E78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{6AE7107B-D4C6-44EA-99EC-2E03AB01FAEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AE7107B-D4C6-44EA-99EC-2E03AB01FAEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AE7107B-D4C6-44EA-99EC-2E03AB01FAEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{637AA467-9295-40E7-98EE-645CCDD25E78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{637AA467-9295-40E7-98EE-645CCDD25E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{637AA467-9295-40E7-98EE-645CCDD25E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{637AA467-9295-40E7-98EE-645CCDD25E78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
