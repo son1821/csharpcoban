@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/BaiTapSinhVien
+/BaiTapLucGiao
+/QuanLySinhVien1
+/HelloWorld.sln
