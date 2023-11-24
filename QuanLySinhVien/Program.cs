@@ -3,13 +3,22 @@
 
 namespace QuanLySinhVien
 {
+    
 
     class Program
     {
-        public static SinhVien[] danhSachSinhVien = new SinhVien[100];
-        public static int soLuongSinhVien = 0;
+        static List<SinhVien> danhSachSinhVien = new List<SinhVien>();
+        public int soLuongSinhVien()
+        {
+            int soLuongSinhVien = 0;
+            if (danhSachSinhVien != null)
+            {
+                soLuongSinhVien = danhSachSinhVien.Count;
+            }
+            return soLuongSinhVien;
+        }
         static void Main(string[] args)
-        {   
+        {
             int chon;
             do
             {
@@ -37,13 +46,16 @@ namespace QuanLySinhVien
                         Xoa();
                         break;
                     case 4:
-                        TimKiemBangTen();
+                        TimKiemTheoTen();
                         break;
                     case 5:
                         SapXepTheoGPA();
                         break;
                     case 6:
                         SapXepTheoTen();
+                        break;
+                    case 7:
+                        SapXepTheoID();
                         break;
                     case 8:
                         HienThiDanhSach();
@@ -52,11 +64,11 @@ namespace QuanLySinhVien
                     default:
                         Console.WriteLine("Lựa chọn không hợp lệ sinh vui lòng nhập lại");
                         break;
-                       
+
                 }
                 Console.WriteLine();
-            } while (chon != 0 );
-            
+            } while (chon != 0);
+
         }
         static void ThemSinhVien()
         {
@@ -74,45 +86,34 @@ namespace QuanLySinhVien
             Console.Write("Nhập Điểm Hoá:");
             double diemHoa = double.Parse(Console.ReadLine());
             SinhVien sinhVien = new SinhVien(ten, gioiTinh, tuoi, diemToan, diemLy, diemHoa);
-            danhSachSinhVien[soLuongSinhVien]=sinhVien;
-            soLuongSinhVien++;
+            danhSachSinhVien.Add(sinhVien);
             Console.WriteLine("Thêm Sinh Viên Thành Công");
             Console.WriteLine("---------------------------");
+
         }
-        static int TimViTri(int id)
-        {
-            for(int i = 0; i < soLuongSinhVien; i++)
-            {
-                if(danhSachSinhVien[i].Id == id)
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
+        
         static void CapNhat()
         {
-            Console.Write("Nhập ID Sinh Viên Muốn Cập Nhật: ");
-            int id = int.Parse(Console.ReadLine());
-            int vitri = TimViTri(id);
-            if(vitri != -1)
+            SinhVien sv = TimSinhVien();
+
+            if (sv != null)
             {
-               SinhVien sinhVien = danhSachSinhVien[vitri];
+
                 Console.WriteLine("-------------------CẬP NHẬP SINH VIÊN-----------------");
                 Console.Write("Nhập Tên Sinh Viên:");
-                sinhVien.Ten = Console.ReadLine();
+                sv.Ten = Console.ReadLine();
                 Console.Write("Nhập Giới Tính: ");
-                sinhVien.GioiTinh = Console.ReadLine();
+                sv.GioiTinh = Console.ReadLine();
                 Console.Write("nNhập Tuổi:");
-                sinhVien.Tuoi = int.Parse(Console.ReadLine());
+                sv.Tuoi = int.Parse(Console.ReadLine());
                 Console.Write("Nhập Điểm Toán:");
-                sinhVien.DiemToan = double.Parse(Console.ReadLine());
+                sv.DiemToan = double.Parse(Console.ReadLine());
                 Console.Write("Nhập Điểm Lý:");
-                sinhVien.DiemLy = double.Parse(Console.ReadLine());
+                sv.DiemLy = double.Parse(Console.ReadLine());
                 Console.Write("Nhập Điểm Hoá:");
-                sinhVien.DiemHoa = double.Parse(Console.ReadLine());
-                sinhVien.DiemTrungBinh = (sinhVien.DiemToan + sinhVien.DiemLy + sinhVien.DiemHoa) / 3;
-                sinhVien.HocLuc = sinhVien.TinhHocLuc(sinhVien.DiemTrungBinh);
+                sv.DiemHoa = double.Parse(Console.ReadLine());
+                sv.DiemTrungBinh = (sv.DiemToan + sv.DiemLy + sv.DiemHoa) / 3;
+                sv.HocLuc = sv.TinhHocLuc(sv.DiemTrungBinh);
                 Console.WriteLine("Cập Nhật Sinh Viên Thành Công");
                 Console.WriteLine("---------------------------");
 
@@ -127,61 +128,65 @@ namespace QuanLySinhVien
 
         {
             Console.WriteLine("-------------------XOÁ SINH VIÊN-----------------");
-            Console.Write("Nhập ID Cần Xoá:  ");
+            SinhVien sv = TimSinhVien();
+
+            if (sv != null)
+            {
+
+                danhSachSinhVien.Remove(sv);
+            }
+            Console.WriteLine("Xoá thành công!");
+
+        }
+        static SinhVien TimSinhVien()
+        {
+            Console.Write("Nhập ID Sinh Viên Muốn Tìm: ");
             int id = int.Parse(Console.ReadLine());
-            int vitri = TimViTri(id);
-            if(vitri != -1)
+            SinhVien sv = null;
+            if (danhSachSinhVien != null && danhSachSinhVien.Count > 0)
             {
-                for(int i = vitri;i< soLuongSinhVien-1; i++)
+                foreach (SinhVien sinhVien in danhSachSinhVien)
                 {
-                    danhSachSinhVien[i] = danhSachSinhVien[i + 1];
-                }
-                danhSachSinhVien[soLuongSinhVien - 1] = null;
-                soLuongSinhVien--;
-                Console.WriteLine("Xoá thành công!");
-            }
-            else
-            {
-                Console.WriteLine("Bạn đã nhập sai ID sinh viên");
-            }
-        }
-        static void TimKiemBangTen()
-        {
-            Console.WriteLine("-------------------TÌM KIẾM SINH VIÊN THEO TÊN-----------------");
-            Console.Write("Nhập tên sinh viên cần tìm kiếm:");
-            string tenTimKiem = Console.ReadLine();
-            for(int i = 0; i < soLuongSinhVien; i++)
-            {
-                if(tenTimKiem == danhSachSinhVien[i].Ten)
-                {
-                    Console.WriteLine("Tìm kiếm thành công!");
-                    danhSachSinhVien[i].HienThiSinhVien();
-                    
-                }
-                else
-                {
-                    Console.WriteLine("Tên bạn nhâp không đúng.");
-                }
-            }
-            
-        }
-        static void SapXepTheoGPA()
-        {
-            Console.WriteLine("-------------------sẮP XẾP THEO GPA-----------------");
-            for(int i = 0; i <  soLuongSinhVien-1; i++)
-            {
-                for(int j = i + 1; j < soLuongSinhVien; j++)
-                {
-                    if (danhSachSinhVien[i].DiemTrungBinh < danhSachSinhVien[j].DiemTrungBinh)
+                    if (sinhVien.Id == id)
                     {
-                        
-                        SinhVien sv = danhSachSinhVien[i];
-                        danhSachSinhVien[i] = danhSachSinhVien[j];
-                        danhSachSinhVien[j] = sv;
-                        danhSachSinhVien[i].HienThiSinhVien();
+                        sv = sinhVien;
                     }
                 }
             }
+            return sv;
+
+        }
+        static void TimKiemTheoTen()
+        {
+            SinhVien timkiem = TimKiemTen();
+            if(timkiem != null)
+            {
+                timkiem.HienThiSinhVien();
+            }
+        }
+        static SinhVien TimKiemTen()
+        {
+
+            Console.Write("Nhập Tên Sinh Viên Muốn Tìm: ");
+            string name =Console.ReadLine();
+            SinhVien sv = null;
+            if (danhSachSinhVien != null && danhSachSinhVien.Count > 0)
+            {
+                foreach (SinhVien sinhVien in danhSachSinhVien)
+                {
+                    if (sinhVien.Ten.Contains(name))
+                    {
+                        sv = sinhVien;
+                    }
+                }
+            }
+            return sv;
+        }
+        static void SapXepTheoGPA()
+        {
+           
+            Console.WriteLine("-------------------sẮP XẾP THEO GPA-----------------");
+            danhSachSinhVien.Sort((sv1,sv2)=>sv1.DiemTrungBinh.CompareTo(sv2.DiemTrungBinh));
             Console.WriteLine("Sắp xếp thành công !");
             Console.WriteLine("----------------------");
 
@@ -189,48 +194,24 @@ namespace QuanLySinhVien
         static void SapXepTheoTen()
         {
             Console.WriteLine("-------------------sẮP XẾP THEO TÊN-----------------");
-            for (int i = 0; i < soLuongSinhVien; i++)
-            {
-                for(int j = i + 1; j < soLuongSinhVien; j++)
-                {
-                    char ChuCaiDauI = danhSachSinhVien[i].Ten[0];
-                    char ChuCaiDauJ = danhSachSinhVien[j].Ten[0];
-                    if(ChuCaiDauI > ChuCaiDauJ)
-                    {
-                        SinhVien sv = danhSachSinhVien[i];
-                        danhSachSinhVien[i] = danhSachSinhVien[j];
-                        danhSachSinhVien[j] = sv;
-                        
-                    }
-                }
-            }
+            danhSachSinhVien.Sort((sv1, sv2) => sv1.Ten.CompareTo(sv2.Ten));
             Console.WriteLine("Sắp xếp thành công !");
             Console.WriteLine("----------------------");
         }
         static void SapXepTheoID()
         {
             Console.WriteLine("-------------------sẮP XẾP THEO ID-----------------");
-            for (int i = 0; i < soLuongSinhVien; i++)
-            {
-                for (int j = i+1; j < soLuongSinhVien; j++)
-                {
-                    if (danhSachSinhVien[i].Id < danhSachSinhVien[j].Id)
-                    {
-                        SinhVien sv = danhSachSinhVien[i];
-                        danhSachSinhVien[i] = danhSachSinhVien[j];
-                        danhSachSinhVien[j] = sv;
-                    }
-                }
-            }
+
+            danhSachSinhVien.Sort((sv1, sv2) => sv1.Id.CompareTo(sv2.Id));
             Console.WriteLine("Sắp xếp thành công !");
             Console.WriteLine("----------------------");
         }
        static void HienThiDanhSach()
         {
             Console.WriteLine("--------------------DANH SÁCH SINH VIÊN---------------------");
-            if (soLuongSinhVien > 0)
+            if (danhSachSinhVien.Count > 0)
             {
-                for (int i = 0; i < soLuongSinhVien; i++)
+                for (int i = 0; i < danhSachSinhVien.Count; i++)
                 {
                     danhSachSinhVien[i].HienThiSinhVien();
                 }
@@ -240,7 +221,10 @@ namespace QuanLySinhVien
                 Console.WriteLine("Danh sách sinh viên rỗng");
             }
         }
+        
+       
     }
+}
 
-    }
+    
 
